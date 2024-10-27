@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ascii Art Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <h1>Ascii Art Generator</h1>
+    <form method="POST" action="/ascii">
+        <label for="text">Please enter text below</label><br>
+        <textarea name="text" id="text" placeholder="ASCII characters only">{{.Text}}</textarea><br>
+        <label for="file">Please choose a font</label><br>
+        <div>
+            <input type="radio" name="file" value="standard.txt" id="standard.txt">
+            <label for="standard.txt">Standard</label>
+        </div>
+        <div>
+            <input type="radio" name="file" value="thinkertoy.txt" id="thinkertoy.txt">
+            <label for="thinkertoy.txt">Thinkertoy</label>
+        </div>
+        <div>
+            <input type="radio" name="file" value="shadow.txt" id="shadow.txt">
+            <label for="shadow.txt">Shadow</label>
+        </div>
+        <div>
+            <input type="submit" value="Submit" id="submit">
+        </div>
+    </form>
+    <div id="output">
+        <pre>{{.Result}}</pre>
+    </div>
+    <div class="download-button">
+        <form method="GET" action="/export">
+            <input type="hidden" name="result" value="{{.Result}}">
+            <input type="submit" value="Download">
+        </form>
+    </div>
+</body>
+</html>
